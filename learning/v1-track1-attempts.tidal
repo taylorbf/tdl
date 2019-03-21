@@ -1,0 +1,73 @@
+
+
+-- ok but not right for track 1
+
+d1 $ speed "1 0.9375 <1.125 1.25> <0.75 0.9375 1>" |* speed "<1 1 0.75 1.25>" # s "piano" # n "22" # gain (slow 4 $ sine) |* gain "<0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1>" # cutoff (range 2000 5000 $ slow 8 $ sine) # pan rand # cps (range 0.9 1.5 (rand))
+
+d2 $ speed "0.666666 / 8" # s "piano:0" # cutoff 300 # gain 1.5
+
+d3 $ speed "[<1 ~ 1> <1.125 1.5 1.875 1.5>] / 2" # s "piano:15" # cutoff 400 # gain "0.7"
+
+hush
+
+---
+
+d1 $ speed "[1 1.125 1.25 1.5 1.66666]*3" # sound "piano:20" # gain "0.5" |* speed "<1 0.75 0.666666>" # sustain "0.5"
+
+hush
+
+---
+
+-- nice chord..
+
+d1 $ speed "[1, 1.125, 1.25, 1.5, 1.875]" # sound "piano" # n (range 18 20 $ irand 4) # gain "0.5" |* speed "0.5" # sustain "<5 5 5 5 5 0.5>" # cps (range 0.25 0.6 (rand))
+
+d2 $ sound "bd" # cutoff 100 # gain 0.3
+
+hush
+
+--
+
+-- again interesting
+
+d1 $ speed "[1 1.125 1.25]*5" # sound "piano" # n "21" # gain (slow 12 $ range 0.7 1 $ sine) |* speed "1" # sustain "4" # cps (range 0.4 0.6 sine) # cutoff 1500
+
+d1 $ speed "[0.833333 1 1.125 1.25]*5" # sound "piano" # n "19" # gain (slow 12 $ range 0.7 1 $ sine) |* speed "1" # sustain "4" # cps (range 0.4 0.6 sine)
+
+d1 $ speed "[0.666666 0.83333 1 1.125 1.25]*5" # sound "piano" # n "19" # gain (slow 12 $ range 0.7 1 $ sine) |* speed "1" # sustain "4" # cps (range 0.4 0.6 sine)
+
+d1 $ speed "[0.75 0.9375 1.25]*5" # sound "piano" # n "19" # gain (slow 12 $ range 0.7 1 $ sine) |* speed "1" # sustain "4" # cps (range 0.4 0.6 sine)
+
+d1 $ speed "[0.666666 0.83333 <1.5 1.333 1.125 1.25>]*5" # sound "piano" # n "19" # gain (slow 12 $ range 0.7 1 $ sine) |* speed "1" # sustain "4" # cps (range 0.4 0.6 sine)
+
+d1 $ speed "[0.75 0.9375 1.125 <1.5 1.333 1.125 1.25>]*4" # sound "piano" # n "19" # gain (slow 12 $ range 0.7 1 $ sine) |* speed "1" # sustain "4" # cps (range 0.4 0.6 sine)
+
+hush
+
+--
+
+-- in 75 hz
+
+d1 $ speed "[1 1.125 1.25]*5" # sound "piano" # n "21" # gain (slow 12 $ range 0.7 1 $ sine) |* speed "0.681818181" # sustain "4" # cps (range 0.4 0.6 sine) # cutoff 1500
+
+d1 $ speed "[0.833333 1 1.125 1.25]*5" # sound "piano" # n "21" # gain (slow 12 $ range 0.7 1 $ sine) |* speed "0.681818181" # sustain "4" # cps (range 0.4 0.6 sine)
+
+d1 $ speed "[0.666666 0.83333 1 1.125 1.25]*5" # sound "piano" # n "21" # gain (slow 12 $ range 0.7 1 $ sine) |* speed "0.681818181" # sustain "4" # cps (range 0.4 0.6 sine)
+
+d1 $ speed "[0.75 0.9375 1.25]*5" # sound "piano" # n "21" # gain (slow 12 $ range 0.7 1 $ sine) |* speed "0.681818181" # sustain "4" # cps (range 0.4 0.6 sine)
+
+d1 $ speed "[0.666666 0.83333 <1.5 1.333 1.125 1.25>]*5" # sound "piano" # n "21" # gain (slow 12 $ range 0.7 1 $ sine) |* speed "0.681818181" # sustain "4" # cps (range 0.4 0.6 sine)
+
+d1 $ speed "[0.75 0.9375 1.125 <1.5 1.333 1.125 1.25>]*4" # sound "piano" # n "21" # gain (slow 12 $ range 0.7 1 $ sine) |* speed "0.681818181" # sustain "4" # cps (range 0.4 0.6 sine)
+
+
+-- in 75 hz
+-- nice ending
+
+d1 $ speed "[1 1.125 1.25]*5" # sound "piano" # n "21" # gain (slow 12 $ range 0.7 1 $ sine) |* speed "0.681818181" # sustain "4" # cps (range 0.4 0.6 sine) # cutoff 1500
+
+d2 $ speed "1 / 4" # sound "piano" # n "0" # gain "1" |* speed "0.681818181" # cutoff 300
+
+d3 $ speed "<1.5 1.675 1.5 1.875> / 5" # sound "piano" # n "35" # gain "0.78" |* speed "0.681818181" |* speed "0.5" # cutoff 1000 # sustain "10"  -- |* speed (range 0.99 1.01 $ rand)
+
+hush

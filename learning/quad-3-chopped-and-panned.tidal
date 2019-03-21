@@ -1,0 +1,114 @@
+
+
+
+
+--meh
+d1 $ slow 1 $ n (run 11) # s "fire" # legato (slow 40 $ scale 1 10 sine) # pan (slow 40 $ scale 0 4 saw) # begin (slow 40 $ scale 0 0.3 sine)
+
+hush
+
+-- no
+d1 $ fast (discretise 1 $ irand 5 + 1) $ s "bd*5" # legato 3 # pan (slow 103 $ scale 0 1 sine) # begin 0.2 # bandf (choose [880, 990, 770, 660, 440]) # crush 3 # bandq (slow 50 $ scale 1 100 sine) # delay 0.8 # delayfeedback 0.7
+
+d4 $ slow 4 $ s "piano:26" # cutoff 1000 # gain 1
+
+
+-- work with this....
+
+d1 $ fast 10 $ s "fire" # speed (choose [-1, 1]) # begin 0.9 # end 1 # pan (slow 40 $ scale 0 1 sine) # gain (slow 100 $ scale 0 1 sine) # delay 0.8
+
+d2 $ fast 8 $ s "hh:7" # speed (choose [-1, 1]) # begin 0.2 # end 0.5 # pan (slow 40 $ scale 0 1 sine) # gain (slow 100 $ scale 0 1 sine) # delay 0.8 # gain 1
+
+d4 $ slow 4 $ speed "<[1.5 [1.5 [0.75 1.125]], [1.125 1.3333333]], 0.6666666> [[1.5 1.125] 0.9]" # s "piano:26" # cutoff 1000 # gain 1 # delay 0.1 # legato 4
+
+hush
+
+-- ok....
+
+d1 $ jux (rev) $ fast "<20 14 10 11 14 13 10 9>" $ s "fire" # speed (slow 100 $ scale (-1) 1 sine) # legato "1.5" # pan (slow 40 $ scale 0 1 sine) # gain (slow 100 $ scale 0 0.6 sine) # delay 0.8 # delayfeedback 0.5 # bandf 990 # bandq (rand * 200)
+
+d2 $ jux (rev) $ fast "<20 14 10 11 14 13 10 15>" $ s "hh:7" # speed (-1) # legato "1.5" # pan (slow 40 $ scale 0 1 sine) # gain (slow 100 $ scale 0 0.3 sine) # delay 0.8 # delayfeedback 0.3 # bandf 1210 # bandq (rand * 200)
+
+d3 $ slow 8 $ speed "[0.75, 0.9]? [0.6666666?, 0.83333333?]" # s "piano:26" # cutoff 1000 # gain 0.5 # legato 4 # delay 0.8 # delayfeedback 0.3 # bandf 440 # bandq 0
+
+d5 $ slow 6 $ speed "1.5?" # s "piano:14" # cutoff 400 # gain 0.5 # legato 4
+
+hush
+
+d1 $ s "bd"
+
+d2 $ s "bd*5"
+
+
+
+-- not bad...
+-- could transition into this noisey chaos from a noise that is more regular, like chopped and repeated
+
+
+d1 $ fast 55 $ s "noise" # hcutoff 100 # gain 1 # pan (slow 500 $ scale 0 1 sine)
+
+d5 $ slow 3 $ speed "[1.5, 0.75]" # s "piano:14" # cutoff 400 # gain 0.8 # legato 4 # silence
+
+--t1 (clutchIn 64)
+d1
+$ sometimes (fast 2)
+$ sometimes (fast 3)
+$ fast (discretise 1 $ irand 5 + 5)
+$ jux (rev)
+$ sometimes (rev)
+$ sometimes (slow 2)
+$ sometimes (striateL' 3 0.125 4)
+$ s "noise"
+# pan (slow 200 $ scale 0 1 sine)
+# gain (slow 500 $ scale 0 1.5 sine)
+# speed 1
+
+d3 $ slow 16 $ speed "<[[0.75, 0.9]? [0.6666666?, 0.83333333?] ~ ~] [[0.5625, 0.666666666] [0.6666666, 0.83333333]] [[0.75, 0.9] [0.6666666, 0.83333333] [0.5625, 0.666666666] [0.5, 0.625] ~ ~]>" # s "piano:26" # cutoff 1000 # gain 0.5 # legato 4 # delayfeedback 0.3 # bandf 440 # bandq 0 # pan rand # delay rand
+
+hush
+
+
+
+-- nice / ok
+
+d1 $ fast 10 $ s "rain" # legato 10 # pan rand # gain 1 # begin rand
+
+-- t1 (clutchIn 12) $ fast 30 $ s "rain" # legato 1 # pan rand # gain 1 # begin rand
+
+-- t1 (clutchIn 12) $ fast 30 $ s "rain" # legato 1 # pan rand # gain 1 # begin rand # cutoff 500
+
+d2 $ jux (rev) $ slow 8 $ speed "[<0.75 0.9 1.125 ~>, <<1.4 1.5> ~ 0.9 1.1>]" # s "<piano:26 piano:34>" # cutoff 800 # pan "0 1"
+
+hush
+
+
+
+
+--
+
+d1 $ jux (rev) $ fast 2 $ speed "[0.75 0.9 1.125 <1.33333 1.5> 0.9 1]" # s "<piano:26 piano:34>" # legato 10 # cutoff 800 # pan "0 1"
+
+d1 $ jux (rev) $ fast (discretise 1 $ irand 6 + 2) $ speed "[0.75 0.9 1.125 <1.33333 1.5> 0.9 1]" # s "<piano:26 piano:34>" # legato 10 # pan "0 1" # cutoff (slow 1000 $ scale 800 2000 sine)
+
+hush
+
+--
+
+1.875
+1.6875
+1.5
+1.3125
+
+
+d2 $ fast 2 $ speed "<0.8333333 0.8333333 0.6666666> <<0.8333333 1.25> <1.66666 1 1.125>> <<0.833333 1 1.125> <1.25 1.125 0.5>>" # s "<piano:26 piano:34>" # legato 10 # cutoff 800 # pan rand # gain 0.8
+
+d1 $ sometimes (scramble 4) $ fast 2 $ speed "<0.8333333 0.8333333 0.6666666>? <<0.8333333 1.25>? <1.66666 1 1.125>> <<0.833333 1 1.125>? <1.25 1.125 0.5>>?" # s "<piano:26 piano:34>" # legato 10 # cutoff 800 # pan rand # gain 0.8
+
+hush
+
+
+--
+
+d2 $ slow 2 $ chop 12 $ s "piano:34" # cutoff 800 # pan rand # gain 0.8
+
+-- d2 $ fast 10 $ jux (rev) $ speed "1.5" # (zoom (0.1, 0.15) $ chop 32 $ sound "piano:12") # pan (slow 50 $ sine) # gain (slow 50 $ scale 0.5 1 sine)

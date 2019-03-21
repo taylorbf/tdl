@@ -1,0 +1,15 @@
+d1 $ slow 8 $ s "piano:6" # speed "0.75" # cutoff 300 # gain 0.7
+
+d2 $ slow 4 $ s "piano:26" # speed "<1 1.875>" # cutoff 1000 # gain 0.7
+
+d3 $ slow 2 $ s "piano:26" # speed "<1.5 1.6875 1.875 1.6875>" # cutoff 1000 # gain 0.7
+
+hush
+
+
+d3 $ cat [
+slow (discretise 1 $ irand 10 / 100 + 1.8) $ sound "piano:26 ~ ~ ~ ~" # speed "1.25",
+slow (discretise 1 $ irand 10 / 100 + 1.8) $ sound "~ piano:26 ~ ~ ~" # speed "1.5",
+slow (discretise 1 $ irand 10 / 100 + 1.8) $ sound "~ ~ piano:26 ~ ~" # speed "1.6875",
+slow (discretise 1 $ irand 10 / 100 + 1.8) $ sound "~ ~ ~ piano:26 ~" # speed "1.875"
+] # cutoff 500

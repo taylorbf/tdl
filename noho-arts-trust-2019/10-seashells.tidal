@@ -1,0 +1,23 @@
+
+
+d1 $ slow 1.1 $ jux (rev) $ n "[14 16 18 20]*3"
+# s "p"
+# sustain 1
+|+ n "-2 0 2"
+|+ n "<-2 0>"
+# delay 0.9
+# delayfeedback 0.9
+-- # silence
+
+d3 $ n "8/4"
+    # sound "p"
+    # cutoff 2000
+    # gain 1.5
+    # sustain 20
+    |* speed 1
+    # cps (slow 15 $ range 1 1.5 $ sine)
+    # speed 0.5
+
+setcps "0.8"
+
+hush

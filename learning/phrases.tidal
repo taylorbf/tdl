@@ -1,0 +1,9 @@
+d1 $ spread ($) [fast 1] $ s "piano:33*6" # pan (rand) # speed (scramble 6 "0.25 0.3333 0.5 0.75 1 1.125 1.25 1.5") # cutoff (scale 600 1000 $ slow 20 $ sine)
+
+d2 $ s "piano:27*6" # pan (rand) # speed (scramble 6 "0.5 0.75 1")
+
+d3 $ s "bd" # cutoff 100
+
+d2 $ silence
+
+hush

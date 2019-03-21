@@ -1,0 +1,80 @@
+---------------------------
+-- accelerate
+-- sounds kinda fuck-a-round-y
+
+d1 $ almostNever (# accelerate rand)
+   $ n "<10? 14? 16? 18?>*<1 2 3 4 5>" # sound "p-wash" # sustain 5
+
+hush
+
+
+---------------------------
+--begin 0.05
+--nice
+
+d1 $ rarely (|* speed "-1")
+  $ n "<<5 7 7> 10 14 16 18>*<1 2 3 4 5>" # s "p-ji" # begin "0.05" # cps (range 0.7 1.3 $ rand) # sustain 4
+
+d2 $ n "0/4" # s "p-ji" # cutoff 100 # speed "0.6666" # gain 1
+
+hush
+
+-- or could use begin to kind of fade out
+
+d1 $ n "<<5 7 7> 10 14 16 18>*<1 2 3 4 5>" # s "p-ji" # begin (range 0.5 1 $ rand) # cps (range 0.7 1.3 $ rand) # sustain 4
+
+
+
+----------------------------
+-- coarse
+-- meh
+
+d1 $ n "<<5 7 7> 10 14 16 18>*<1 2 3 4 5 6 7 8>" # s "p-ji" # coarse "[0..100]" # cps (range 0.7 1.3 $ rand) # sustain 4 # cutoff 1000
+
+-- try again
+-- kind of a cool wash to stack these...
+
+d1 $ n "<18>*8" # s "p" # coarse "[0..64]/4" # cps (slow 20 $ range 0.8 1.2 $ rand) # sustain 4 # cutoff 1000 # pan rand
+
+d3 $ n "<16>*10" # s "p" # coarse "[0..64]/4" # sustain 4 # cutoff 1000 # pan rand
+
+d4 $ n "<14>*9" # s "p" # coarse "[0..100]/4" # sustain 4 # cutoff 1000 # pan rand
+
+d5 $ n "<11>*7" # s "p" # coarse "[0..100]/4" # sustain 4 # cutoff 1000 # pan rand
+
+hush
+
+--
+--loop
+-- 2/10
+d1 $ n "<18>*4" # s "p-ji" # cutoff 1000 # pan rand # loop (irand 20) # begin "0.1" # end (range 0.1 0.2 $ rand)
+
+hush
+
+---------------------
+-- nudge
+-- will be useful
+
+d1 $ n "[<10 8>, 14, <12 18 19>] 16? 15? 14?" # s "p-ji" # cutoff 1000 # pan rand # cps (range (1/7) (1/5) $ rand) # nudge (range 0.3 0.6 $ rand)
+
+d2 $ n "0/2" # s "p-ji" # cutoff 100 # speed "0.6666"
+
+hush
+
+
+
+---------------
+
+d1 $ n "14 14" # s "p-ji p-wash" # cutoff 1000 # pan rand # cps (range (1/7) (1/5) $ rand) # nudge (range 0.3 0.6 $ rand) |* speed "1 1.5"
+
+
+
+--
+--weave
+
+d1 $ weave 16 (pan sine)
+  [sound "bd sn cp",
+   sound "casio casio:1",
+   sound "[jvbass*2 jvbass:2]/2",
+   sound "hc*4"
+  ]

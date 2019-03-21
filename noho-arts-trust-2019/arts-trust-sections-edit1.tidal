@@ -1,0 +1,245 @@
+{-
+sections:
+1_ gamut (3')
+2_ north adams (3')
+3_ wash w/ bend (5')
+4_ one word (4')  -- done but needs tuning
+    5_ seashells ??
+6_ composed ending (3') -- which is, track1?
+== 18'
+-}
+
+{-
+Items to work on / with:
+- re-bounce samples from nap. slowed down and complete (at least know highest index)
+- work on transition between gamut and next section
+- work on fading in gamut for opening?
+- perhaps the 5-6 arps belong later in the piece?
+- 5-6 arpeggios, figure out how to program in the n +0, -2, -4 progression, using whenmod? -- watch some videos to see if anyone does this kind of thing.
+- bounce some phasor samples in tune
+- rewrite "track1" section using "p" sample bank
+-}
+
+
+
+-- gamut / beginning
+--------------------
+
+d1 $ jux (rev)
+   $ randcat [
+        n "[12 14 15]*<3 4>" # sound "p" # cps 1 # sustain 3,
+        n "[10 14 16]*<3 4>" # sound "p" # cps 1 # sustain 3
+        --n "<5 4 5 7>" # s "p" # cps 5 # sustain 10,
+        --n "[15, 19, 21]" # s "p" # cps 0.2 # sustain 10
+     ]
+   # cutoff 1000
+   # gain (slow 10 $ range 0.6 1 $ sine)
+   # delay 0
+
+d3 $ n "<8 8 8 5>/<4>"
+    # s "p"
+    # cutoff 500
+    # gain 1.3
+    |* speed 0.5
+
+hush
+
+
+-- 2_ 5-6 arpeggios, rather than north adams
+-- i think this is more enjoyable
+
+d1 $ jux (rev)
+$ whenmod 7 4 (rev)
+$ n "0 2 4 6 7 8 9 11"
+# s "p"
+|+ n "<0 7 14 21 21 14 7>"
+# cps 2
+# gain 0.7
+|+ n "0"  -- 0, -2, and -4 work well (Except or wrapped notes..)
+
+d2 $ n "11/4" # s "p" |* speed 0.5 # gain 1.2 # silence
+
+hush
+
+-- 2_ north adams (3')
+-- does this not really work in this cycle context?
+-- inability to get the arpeggios out of phase
+
+d1 $ slow 1 $ jux (0.5 <~)
+$ n "7 13 14 16 18 20 21 23 25 27"
+# s "p"
+# cps (slow 200 $ range 1 2 $ sine)
+# sustain 2
+# gain 0.8
+# silence
+
+    -- replace with phasor?
+d2 $ n "<11 12 12 12 14>/12"
+# s "p"
+# sustain 20
+# gain 1
+|* speed 0.5
+
+hush
+
+
+-- 3_ wash w/ bend (5')
+
+ -- one version of wash
+
+ d1 $ jux (0.5 <~)
+ $ almostNever (rev)
+ $ almostNever (slow 2)
+ $ sometimes (# speed "<1.3333 1.5 2>")
+ $ n "[7 11 14 21 22]*4"
+ # s "p-wash"
+ # cps (slow 200 $ range 1 2 $ sine)
+ # sustain 3
+ # delayfb 0.9
+ # room 0.8
+ # gain 0.8
+
+ hush
+
+ d3 $ s "bd" # cutoff 900
+
+ -- another version of wash
+
+d1 $ superimpose (|* speed "1.5 2 1.125")
+$ n (scramble 6 "5 7 14 16 18 22 23 25")
+# s "p-wash"
+# cps 1
+# pan rand
+# cutoff (range 300 2500 $ rand)
+# room 0.5
+# gain (range 0.8 1 $ rand)
+|* speed (-1)
+# delay "0.8"
+# delayfeedback 0.8
+# orbit 1
+|* speed (slow 20 $ range 0.99 1.01 $ sine)
+
+
+hush
+
+
+
+
+-- 4_ one word (4')  -- done but needs tuning
+25 23 21 <22 3 18 14 12 7>
+
+d1 $ n (segment (range 0 3 $ rand) $ scramble 100 "20 22 21 <23 3 18 14 12 7> ~*100")
+# s "p"
+# nudge rand
+# cutoff (range 200 2000 $ rand)
+# gain (range 0.3 1 $ rand)
+# pan rand
+# sustain 20
+# room 0.8
+# cps 1
+|* speed 0.5
+
+d2 $ s "bd/3" # cutoff 30 # gain 0.9 # sustain 0.1
+
+hush
+
+-- 5_ seashells
+
+d1 $ slow 1.1 $ jux (rev) $ n "[14 16 18 20]*3"
+# s "p"
+# sustain 1
+|+ n "-2 0 2"
+|+ n "<-2 0>"
+# delay 0.9
+# delayfeedback 0.9
+# gain 0.8
+-- # silence
+
+d3 $ n "8/4"
+    # sound "p"
+    # cutoff 2000
+    # gain 1.5
+    # sustain 20
+    |* speed 1
+    # cps (slow 15 $ range 1 1.5 $ sine)
+    # speed 0.5
+
+setcps "0.8"
+
+hush
+
+
+
+-- 6_ composed ending (3') -- which is, track1?
+
+
+d1 $ speed "<[1, 1.25, 1.5] [0.833333, 1, 1.25] [0.6666666, 1, 1.25]>/2" -- "0.5 1 1.25 1.5 1.75 2 . 1 1.25 1.5 1.75 2"
+  |* speed "<0.5 0.75>/2"
+  # s "piano"
+  # n 28
+  |* speed "0.681818181"
+  # sustain (range 1 5 $ rand)
+
+d2 $ s "bd/1.5" # cutoff 100 # gain (slow 12 $ range 0.7 1 $ sine)
+
+d3 $ s "piano:0/6"
+  # speed "1.333333"
+  |* speed "0.681818181"
+  # cutoff 200 # gain 1
+
+d4 $ speed "<[0.833333, 1] [0.6666666, 1.25] [0.5, 1.125]>/3" -- "0.5 1 1.25 1.5 1.75 2 . 1 1.25 1.5 1.75 2"
+  |* speed "<1>"
+  # s "piano"
+  # n 28
+  |* speed "0.681818181"
+  # sustain 5
+  # cps (range 0.7 1 (rand))
+
+d5 $ shuffle 10 $ speed "~ ~ ~ ~ ~ ~ ~ ~ ~ <0.5 1 1.5>"
+  |* speed "<1 1.007 0.995 1.001 1.005 0.995 0.997>"
+  # s "piano"
+  # n 28
+  |* speed "0.681818181"
+  # sustain 5
+  # cps (range 0.7 1 (rand))
+
+hush
+
+
+-- testing
+let mode = [1, 1.125, 1.25, 1.333, 1.5, 1.875]
+
+d2 $ speed "<~ ~ ~ 1 1.125 1.25>" # s "piano" # n "28" # pan "1"
+
+d1 $ n "<21 22 23 ~ ~ ~>" # s "p" # gain 0.7 # pan "0"
+
+hush
+
+
+-- composed ending rewritten using p
+-- piano n 28 is equivalent to p n 21
+
+setcps 1
+
+d1 $ n "<[21, 23, 25] [19, 21, 23] [17, 21, 23]>/2"
+  |* speed "<0.5 0.75>/2"
+  # s "p"
+  # sustain (range 1 5 $ rand)
+  # cps (range 0.7 1 (rand))
+
+d2 $ s "bd/1.5" # cutoff 100 # gain (slow 12 $ range 0.7 1 $ sine) # silence
+
+d3 $ s "p/6"
+  # n "<3 4>/6"
+  # cutoff 200 # gain 1
+
+d4 $ n "<[19, 21] [17, 23] [14, 22]>/3" -- "0.5 1 1.25 1.5 1.75 2 . 1 1.25 1.5 1.75 2"
+  # s "p"
+  # sustain 5
+
+d5 $ shuffle 10 $ n "~ ~ ~ ~ ~ ~ ~ ~ ~ <14 21 25>"
+  |* speed "<1 1.007 0.995 1.001 1.005 0.995 0.997>"
+  # s "p"
+  # sustain 5
+
+hush

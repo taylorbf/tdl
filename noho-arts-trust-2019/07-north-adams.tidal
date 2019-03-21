@@ -1,0 +1,45 @@
+let mode = [7, 11, 14, 16, 18, 20, 21, 23, 25, 27]
+
+-- this works
+-- but how to scan an array?
+
+
+d1 $ jux (0.5 <~)
+$ n "7 11 14 16 18 20 21 23 25 27"
+# s "p"
+# cps (slow 200 $ range 1 2 $ sine)
+# sustain 2
+
+hush
+
+
+-- replace with phasor?
+d2 $ n "<4 5 5 5 7>/12"
+# s "p-ji"
+# sustain 10
+# cutoff 1000
+# gain 1.5
+# silence
+
+setcps 1
+
+hush
+
+
+
+-- this is pretty rad
+
+d1 $ jux (0.5 <~)
+$ almostNever (rev)
+$ almostNever (slow 2)
+$ sometimes (# speed "<1.3333 1.5 2>")
+$ n "[7 11 14 21]*4"
+# s "p-wash"
+# cps (slow 200 $ range 1 2 $ sine)
+# sustain 3
+# delayfb 0.9
+# room 0.8
+
+hush
+
+d3 $ s "bd" # cutoff 900

@@ -1,0 +1,8 @@
+
+-- 1
+
+d1 $ sometimesBy 0.1 (slow 2) $ s "piano*4" # n (irand 15) # gain 0.9 # cutoff (range 100 200 $ slow 8 $ sine) # resonance "0.1" # delay 0.8 # pan "1"
+
+d2 $ s "<piano*3 piano:4 piano:4>" # speed 3 # gain 0.8 # n (irand 15) # cutoff (range 200 300 $ slow 8 $ sine) # resonance "0.1" # delay 0.8 # pan "0.7"
+
+d3 $ s "<piano*5 piano:6>" # speed 2.5 # gain 0.6 # n (irand 15) # cutoff (range 300 400 $ slow 8 $ sine) # resonance "0" # delay 0.8 # pan "0.7"

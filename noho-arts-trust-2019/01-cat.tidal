@@ -1,0 +1,131 @@
+
+------------------------------------------------
+-- this is the section to keep from this file --
+-- could be a good start to performance
+
+d1 $ fast 1
+   $ jux (rev)
+   $ fastcat [
+        speed "[0.83333 1 1.125]*<2 3>" # sound "piano:30",
+        speed "[0.666666 1 1.25]*<2 3>" # sound "piano:30"
+     ] # cutoff 1000 # sustain 2
+   # cps (slow 50 $ range 0.7 1.1 $ sine) -- 0.7 1.1
+   # gain (slow 10 $ range 0.8 1 $ sine)
+   |* speed "0.681818181"
+   # sustain 2
+
+d3 $ speed "<1.125 1.125 1.125 0.833333>/<4>"
+    # sound "piano:19"
+    # cutoff 500
+    # gain 1.5
+    |* speed "0.681818181"
+    |* speed "0.5"
+
+hush
+
+
+
+
+------------------------------------------------
+-- version of above to build on in gamut style
+
+d1 $ fast 1
+   $ jux (rev)
+   $ fastcat [
+        speed "[0.83333 1 1.125]*<2 3>" # sound "piano:30",
+        speed "[0.666666 1 1.25]*<2 3>" # sound "piano:30"
+     ] # cutoff 1000 # sustain 2
+   # cps (slow 50 $ range 0.7 1.1 $ sine) -- 0.7 1.1
+   # gain (slow 10 $ range 0.8 1 $ sine)
+   |* speed "0.681818181"
+   # sustain 2
+
+d3 $ speed "<1.125 1.125 1.125 0.833333>/<4>"
+    # sound "piano:19"
+    # cutoff 500
+    # gain 1.5
+    |* speed "0.681818181"
+    |* speed "0.5"
+
+hush
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- amazin
+
+d1 $ fast 2
+   $ jux (rev)
+   $ randcat [
+        speed "[1 1.125 1.5]*<2 3>" # sound "piano:30",
+        speed "[0.83333 1 1.125]*<2 3>" # sound "piano:30",
+        speed "[0.666666 1 1.25]*<2 3>" # sound "piano:30"
+     ] # cutoff 1000 # sustain 2
+   # cps (slow 10 $ range 0.7 1.1 $ sine)
+   # gain (slow 10 $ range 0.8 1 $ sine)
+   |* speed "0.681818181"
+   # sustain 2
+
+d2 $ slow 1
+   $ randcat [
+       speed "[1 1.125 1.5]*<1 2>" # sound "piano:20",
+       speed "[0.83333 1 1.125]*<1 2>" # sound "piano:20",
+       speed "[0.666666 1 1.25]*<1 2>" # sound "piano:20"
+    ] # cutoff 1000
+    |* speed "0.681818181"
+    # sustain 2
+
+d3 $ speed "<1.125>/<8 6>"
+ # sound "piano:0"
+ # cutoff 500
+ # gain 1.5
+ |* speed "0.681818181"
+
+ hush
+
+-- d3 $ speed "<1.125 1.5 1.5 1.5>/<8 6>"
+ # sound "piano:19"
+ # cutoff 500
+ # gain 1.5
+ |* speed "0.681818181"
+ |* speed "0.5"
+ # silence
+
+hush
+
+
+
+
+
+
+-- good up to here
+
+d1 $ fast 1
+   $ jux (rev)
+   $ fastcat [
+        speed "[0.625 0.75 1]*<2 3>" # sound "piano:30"
+     ] # cutoff 1000 # sustain 2
+   # cps (slow 50 $ range 0.7 1.1 $ sine) -- 0.7 1.1
+   # gain (slow 10 $ range 0.8 1 $ sine)
+   |* speed "0.681818181"
+   # sustain 2
+
+
+d3 $ speed "<0.5>/<4>"
+       # sound "piano:19"
+       # cutoff 500
+       # gain 1.5
+       |* speed "0.681818181"
+       |* speed "0.5"
+
+
+hush

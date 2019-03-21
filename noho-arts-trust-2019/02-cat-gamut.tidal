@@ -1,0 +1,51 @@
+
+
+-- ignore this and focus on 01-cat.tidal.
+
+-- basic
+
+d1 $ slow 3
+   $ jux (rev)
+   $ cat [
+        speed "[0.83333, 1, 1.125]*<1 2>" # sound "piano:30",
+        speed "[0.666666, 1, 1.25]*<1 2>" # sound "piano:30"
+     ] # cutoff 1000 # sustain "3 7 4 5 6 7 8 9 10"
+   # cps (slow 50 $ range 0.7 1.1 $ sine) -- 0.7 1.1
+   # gain (slow 10 $ range 0.8 1 $ sine)
+   |* speed "0.681818181"
+   # sustain 2
+
+d2 $ slow 6 $ s "piano:9" # cutoff 500 # speed "<1 1.125>"
+   |* speed "0.681818181"
+
+hush
+
+
+-- adding to gamut
+
+
+d1 $ slow 3
+   $ jux (rev)
+   $ cat [
+        speed "[0.83333, 1, 1.125]*<1 2>" # sound "piano:30",
+        speed "[0.666666, 1, 1.25]*<1 2>" # sound "piano:30",
+        speed "[0.666666 1 1.25]*12" # sound "piano:30"
+     ] # cutoff 1000 # sustain "3 7 4 5 6 7 8 9 10"
+   # cps (slow 50 $ range 0.7 1.1 $ sine) -- 0.7 1.1
+   # gain (slow 10 $ range 0.8 1 $ sine)
+   |* speed "0.681818181"
+   # sustain (run 7)
+
+hush
+
+
+
+
+
+
+
+-- list of ongoing questions
+
+-- cat randomized?
+-- randomization within patterns?
+-- using scales from arrays?

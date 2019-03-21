@@ -1,0 +1,135 @@
+
+d1 $ sometimes (slow 1) $ every 2 (rev) $ slow 3 $ chop 32 $ s "hh:4" # speed "1.25" # pan rand # delay 0.5 # silence
+
+solo $ d2 $ slow 5 $ speed "1 1.875" # s "piano:26" # cutoff 600 # gain (0.8) # delay 0 # pan rand
+
+d3 $ slow 10 $ s "piano:6" # gain 0.6 # speed "0.75" # cutoff 300
+
+solo $
+d2 $ slow 5 $ speed "1 1.875" # s "piano:26" # cutoff 600 # gain (0.8) # delay 0.5 # pan rand
+
+hush
+
+
+
+
+"1 1.25 1.5 1.6875 1.875"
+
+solo $ d5 $ fast (discretise 1 $ irand 11 + 3) $ speed "1.875" # s "piano:26" # begin (slow 80 $ sine / 2) # pan (slow 30 $ sine) # sustain 0.2 # delay 0.8 # cutoff 1200 # delayfeedback 0.8 # gain 0.6
+
+d2 $ slow 8 $ speed "<0.5 0.75 0.9375>" # s "piano:26" # pan (slow 4 $ sine) # delay 0.6 # cutoff 1200 # begin 0.2 # gain 1.5
+
+hush
+
+
+
+--
+
+d1 $ seqP [
+  (0, 100, fast 3 $ speed "1.375 1.25" # s "piano:26" # legato 20 # pan "0 1" # bandf (slow 300 $ scale 500 2000 saw) # bandq (slow 300 $ scale 0 80 saw) # gain (slow 300 $ scale 1 0.6 saw) ),
+  (50, 100, fast 3 $ speed "1.125 1" # s "piano:26" # gain (slow 150 $ scale 0.4 0.8 tri) # legato 20 # pan "0.25 0.75" # bandf (slow 150 $ scale 500 2000 saw) # bandq (slow 150 $ scale 0 80 saw) )
+]
+
+cps (-1)
+cps 1
+
+
+
+
+-- good basic version of the intro (and/or outro)
+-- needs a random wobbling tonic sine tone leading into or out of it
+
+-- this should be outro. intro will be similar
+d1 $ fast 3 $ speed "1.6875 1.5" # s "piano:26" # legato 20 # bandf (slow 100 $ scale 1000 2000 sine) # pan "0 1" # bandq (slow 600 $ scale 0 10 sine)
+
+-- d4 $ fast 3 $ speed "1.5" # s "~ piano:26" # legato 20 # bandf (slow 100 $ scale 1000 2000 sine) # pan "0 1" # bandq (slow 300 $ scale 0 50 sine)
+
+d2 $ speed "1.125" # s "piano:26" # bandf (slow 100 $ scale 400 1000 sine) # pan "0.5" # bandq (slow 100 $ scale 0 1 sine) # gain 1 # pan "<0 0.25 0.5 0.75>"
+d2 $ silence
+d3 $ slow 16 $ speed "0.5" # s "piano:12" # cutoff 1000 # gain 1 # pan "<0 0.25 0.5 0.75>"
+d3 $ silence
+hush
+
+
+-- intro
+
+d1 $ fast 3 $ speed "1.375 1.25" # s "piano:26" # legato 20 # bandf (slow 1000 $ scale 500 2000 sine) # pan "0 1" # bandq (slow 1000 $ scale 0 80 sine)
+
+d2 $ fast 3 $ speed "1.125 1" # s "piano:26" # gain 0.9 # legato 20 # bandf (slow 1000 $ scale 500 2000 sine) # pan "0.25 0.75" # bandq 0 -- (slow 1000 $ scale 0 10 sine)
+
+d3 $ slow 8 $ speed "[0.25, 0.5]" # s "piano:26" # gain 1 # pan "0 1" # silence
+
+hush
+
+
+-- d4 $ fast 3 $ speed "1.5" # s "~ piano:26" # legato 20 # bandf (slow 100 $ scale 1000 2000 sine) # pan "0 1" # bandq (slow 300 $ scale 0 50 sine)
+
+d2 $ speed "1.125" # s "piano:26" # bandf (slow 100 $ scale 400 1000 sine) # pan "0.5" # bandq (slow 100 $ scale 0 1 sine) # gain 1 # pan "<0 0.25 0.5 0.75>"
+d2 $ silence
+d3 $ slow 16 $ speed "0.5" # s "piano:12" # cutoff 1000 # gain 1 # pan "<0 0.25 0.5 0.75>"
+d3 $ silence
+hush
+
+
+
+
+
+
+
+-- nice - piano swirls
+
+great if you start from
+"1.875"
+and add 1 by 1 (from right to left)
+add each 1 on cycle of bass note
+"1 1.25 1.5 1.6875 1.875"
+
+d5 $ fast (discretise 1 $ irand 10 + 3) $ speed "1 1.25 1.5 1.6875 1.875" # s "piano:26" # begin (slow 80 $ sine / 2) # pan (slow 30 $ sine) # sustain 0.2 # delay 0.8 # cutoff 1200 # delayfeedback 0.8 # silence
+
+d2 $ slow 8 $ speed "<0.5 0.75 0.9375>" # s "piano:26" # pan (slow 4 $ sine) # delay 0.6 # cutoff 1200 # begin 0.2 # gain 2
+
+hush
+
+
+
+-- from flywheel
+
+-- v nice
+
+d1 $ fast "<1 1.5 2 0.25 0.5>" $ every 2 (|*| speed "1.5") $ every 3 (|*| speed "1.33333") $ every 5 (|*| speed "0.6666666") $ speed "1 1.125 1.5" # s "piano:19" # cutoff 1500 # legato "16" # delay 0.8 # pan rand
+
+d2 $ slow 10 $ s "piano:9" # speed "1.125" # gain 1.1 # cutoff 1500
+
+ -- $ sometimes (|-| speed "0.25")
+-- meh
+
+hush
+
+
+-- from flywheel
+
+let ji = [ 16/16, 18/16, 20/16, 24/16, 27/16, 30/16 ]
+
+let oct = [ 0.5, 1]
+
+d4 $ every 2 (rev) $ fast ("<3 8 6 2 7 1>") $ speed ("<1 1.25 1.5 1 1.125 1.5>") # s "piano:20" # legato "10" # cutoff (slow 25 $ scale 1200 2500 sine)
+
+d5 $ fast ("<3 8 6 2 7 1>") $ speed ("<0.75 1 1.5 0.95>") # s "piano:20" # legato "10" # cutoff (slow 20 $ scale 1200 2500 sine)
+
+d6 $ slow 4 $ s "piano:17" # gain 1.1 # speed (ji !! 4 / 2) # cutoff 400 # silence
+
+hush
+
+
+
+-- from flywheel
+
+-- nice
+
+d1 $ sometimes (slow 1) $ every 2 (rev) $ slow 3 $ chop 32 $ s "hh:4" # speed "1.25" # delay 0.5
+
+d2 $ slow 5 $ speed "1 1.875" # s "piano:26" # cutoff 600 # gain (0.8) # delay 0
+
+d3 $ slow 10 $ s "piano:0" # gain 0.9 # speed "0.75"
+
+hush

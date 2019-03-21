@@ -1,0 +1,27 @@
+{-
+Sections:
+Gamut
+One Word
+North Adams
+Wash
+Track1 outro
+-}
+
+
+d1 $ s "<piano:27? piano:9? piano:19? ~>" # speed (choose [1, 1.125, 0.83, 1.5, 1.25, 0.66666]) # cps (range 0.25 5 $ rand) # pan rand
+
+-- this is ok, but can be improved.
+
+hush
+
+
+
+-- make a bank of notes just for this.
+-- make a bank of notes for the whole scale in general???
+-- for now, combine speed and sample
+
+{-
+general tidal questions
+- single note repeated many times in a cycle, but chooses new note each cycle
+
+-}

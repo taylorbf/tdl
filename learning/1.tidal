@@ -1,0 +1,8 @@
+d1 $ s "piano*4" # n (irand 15) # gain 0.6 # cutoff (scale 100 200 $ slow 8 $ sine) # resonance "0.3" # delay 0.8
+
+d2 $ s "piano*3" # speed 3 # gain 0.6 # n (irand 15) # cutoff (scale 200 300 $ slow 8 $ sine) # resonance "0.3" # delay 0.8
+
+d3 $ s "piano*5" # speed 2.5 # gain 0.4 # n (irand 15) # cutoff (scale 300 400 $ slow 8 $ sine) # resonance "0.3" # delay 0.8
+
+
+hush

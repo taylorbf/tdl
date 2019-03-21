@@ -1,0 +1,38 @@
+
+
+
+
+
+-- didn't work
+d1 $ trunc (choose [1, 0.9, 0.8]) $ slow 2 $ speed "<1.125 1.5 1.6666666> ~*100" # s "piano:26" # cutoff 1000 # begin 0.05
+
+
+-- didn't work
+d1 $ spread slow [2, 2.1, 1.9] $ speed "<1.125 1.5 1.6666666>" # s "piano:26" # cutoff 1000 # begin 0.05
+
+
+-- didn't work
+d1 $ slow (discretise 1 $ irand 10 / 100 + 1.8) $ speed "<1.125 1.5 1.6666666>" # s "piano:26" # cutoff 1000 # begin 0.05
+
+-- no
+d1 $ fast (discretise 1 $ irand 2 + 4) $ speed "<1.125 ~ ~ ~ 1.5 ~ ~ ~ 1.6666666 ~ ~ ~>" # s "piano:26" # gain "0.9 0.8 0.9 1" # bandf (slow 40 $ scale 900 1400 sine) # bandq 20 # begin "0.05 0 0.01 0.03 0.1" # delay 0.5 # delayfeedback 0.6 # pan sine
+
+-- no
+d1 $ slow "1 1.5 2" $ speed "<1.125 1.5 1.6666666>" # s "piano:26" # begin 0.05
+
+
+--
+
+d1 $ zoom (0.1, choose [0.6, 0.7, 0.8])  $ slow 2 $ speed "~*100 <1.125 1.5 1.6666666> ~*100" # s "piano:26" # cutoff 1000 # begin 0.05
+
+hush
+
+
+
+
+
+hush
+
+d2 $ slow 2 $ s "bd:6" # cutoff 100
+
+hush

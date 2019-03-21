@@ -1,0 +1,180 @@
+
+{-
+sections:
+1_ gamut (3')
+2_ north adams (3')
+3_ wash w/ bend (5')
+4_ one word (4')  -- done but needs tuning
+    5_ seashells ??
+6_ composed ending (3') -- which is, track1?
+== 18'
+-}
+
+
+
+-- gamut / beginning
+--------------------
+
+d1 $ jux (rev)
+   $ randcat [
+        n "[12 14 15]*<3 4>" # sound "p" # cps 1 # sustain 3,
+        n "[10 14 16]*<3 4>" # sound "p" # cps 1 # sustain 3
+        --n "<5 4 5 7>" # s "p" # cps 5 # sustain 10,
+        --n "[15, 19, 21]" # s "p" # cps 0.2 # sustain 10
+     ]
+   # cutoff 1000
+   # gain (slow 10 $ range 0.6 1 $ sine)
+
+d3 $ n "<8 8 8 5>/<4>"
+    # s "p"
+    # cutoff 500
+    # gain 1.3
+    |* speed 0.5
+
+hush
+
+
+
+
+-- 2_ north adams (3')
+
+d1 $ jux (0.5 <~)
+$ n "7 11 14 16 18 20 21 23 25"
+# s "p"
+# cutoff 3000
+# cps (slow 200 $ range 1.5 2 $ sine)
+# sustain 2
+# gain 0.8
+
+    -- replace with phasor?
+d2 $ n "<4 5 5 5 7>/12"
+# s "p"
+# sustain 10
+# cutoff 1000
+# gain 1
+|* speed 0.5
+
+hush
+
+
+-- 3_ wash w/ bend (5')
+
+ -- one version of wash
+
+ d1 $ jux (0.5 <~)
+ $ almostNever (rev)
+ $ almostNever (slow 2)
+ $ sometimes (# speed "<1.3333 1.5 2>")
+ $ n "[7 11 14 21]*4"
+ # s "pno-wash"
+ # cps (slow 200 $ range 1 2 $ sine)
+ # sustain 3
+ # delayfb 0.9
+ # room 0.8
+ # gain 0.2
+
+ hush
+
+ d3 $ s "bd" # cutoff 900
+
+ -- another version of wash
+
+ -- drone
+-- using diatonic scale bank
+-- save -- used in recording for track
+let oneword = [5,7,14,16,18,22,23,25]
+
+d1 $ superimpose (|* speed "1.5 2 1.125")
+$ s "pno-wash"
+# n (choose oneword)
+# cps 3
+# pan rand
+# cutoff (range 300 2500 $ rand)
+# room 0.5
+# gain (range 0.8 1 $ rand)
+|* speed (-1)
+# delay "0.8"
+# delayfeedback 0.8
+# orbit 1
+|* speed (slow 20 $ range 0.99 1.01 $ sine)
+
+
+
+
+
+
+
+-- 4_ one word (4')  -- done but needs tuning
+
+d1 $ n (scramble 40 "25 23 21 22 3 18 14 12 7")
+# s "p"
+# cutoff (range 100 700 $ rand)
+# gain (range 0.1 0.8 $ rand)
+# pan rand
+|* speed 0.75
+# sustain 20
+# delay 0.8
+
+d2 $ s "bd*2" # cutoff 100 # gain 0.8
+
+
+-- 5_ seashells
+
+d1 $ slow 1.1 $ jux (rev) $ n "[14 16 18 20]*3"
+# s "p"
+# sustain 1
+|+ n "-2 0 2"
+|+ n "<-2 0>"
+# delay 0.9
+# delayfeedback 0.9
+-- # silence
+
+d3 $ n "8/4"
+    # sound "p"
+    # cutoff 2000
+    # gain 1.5
+    # sustain 20
+    |* speed 1
+    # cps (slow 15 $ range 1 1.5 $ sine)
+    # speed 0.5
+
+setcps "0.8"
+
+hush
+
+
+
+-- 6_ composed ending (3') -- which is, track1?
+
+
+d1 $ speed "<[1, 1.25, 1.5] [0.833333, 1, 1.25] [0.6666666, 1, 1.25]>/2" -- "0.5 1 1.25 1.5 1.75 2 . 1 1.25 1.5 1.75 2"
+  |* speed "<0.5 0.75>/2"
+  # s "piano"
+  # n 28
+  |* speed "0.681818181"
+  # sustain (range 1 5 $ rand)
+
+d2 $ s "bd/1.5" # cutoff 100 # gain (slow 12 $ range 0.7 1 $ sine)
+
+d3 $ s "piano:0/6"
+  # speed "1.333333"
+  |* speed "0.681818181"
+  # cutoff 200 # gain 1
+
+d4 $ speed "<[0.833333, 1] [0.6666666, 1.25] [0.5, 1.125]>/3" -- "0.5 1 1.25 1.5 1.75 2 . 1 1.25 1.5 1.75 2"
+  |* speed "<1>"
+  # s "piano"
+  # n 28
+  |* speed "0.681818181"
+  # sustain 5
+  # cps (range 0.7 1 (rand))
+
+d5 $ shuffle 10 $ speed "~ ~ ~ ~ ~ ~ ~ ~ ~ <0.5 1 1.5>"
+  |* speed "<1 1.007 0.995 1.001 1.005 0.995 0.997>"
+  # s "piano"
+  # n 28
+  |* speed "0.681818181"
+  # sustain 5
+  # cps (range 0.7 1 (rand))
+
+hush

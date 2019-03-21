@@ -1,0 +1,156 @@
+
+
+
+d1 $ every 4 rev $ sometimesBy 0.1 (fast 2) $ sometimesBy 0.1 (slow 2) $ n "[<2 3 4 8 9 10> <0 1 5 6>]*7" # sound "bd" # pan rand
+
+hush
+
+
+-- ok
+
+d1 $ s "piano*4" # n (irand 15) # gain 0.8 # cutoff (range 100 200 $ slow 8 $ sine) # resonance "0.1" # delay 0.8 # pan "1"
+
+d2 $ s "piano*3" # speed 3 # gain 0.6 # n (irand 15) # cutoff (range 200 300 $ slow 8 $ sine) # resonance "0.1" # delay 0.8 # pan "0.7"
+
+d3 $ s "piano*5" # speed 2.5 # gain 0.4 # n (irand 15) # cutoff (range 300 400 $ slow 8 $ sine) # resonance "0.1" # delay 0.8 # pan "0.7"
+
+hush
+
+-- same - edited
+
+d1 $ s "piano*4" # n (irand 15) # gain 0.8 # cutoff (range 100 200 $ slow 8 $ sine) # resonance "0.1" # delay 0.8 # pan "0.5"
+
+d2 $ s "piano*3" # speed 3 # gain 0.6 # n (irand 15) # cutoff (range 200 300 $ slow 8 $ sine) # resonance "0.1" # delay 0.8 # pan "0.7"
+
+d3 $ s "piano*5" # speed 2.5 # gain 0.4 # n (irand 15) # cutoff (range 300 500 $ slow 8 $ sine) # resonance "0.1" # delay 0.8 # pan "0.3"
+
+hush
+
+
+-- iteration 2 of above
+
+d1 $ sometimesBy 0.1 (slow 2) $ s "piano*4" # n (irand 15) # gain 0.9 # cutoff (range 100 200 $ slow 8 $ sine) # resonance "0.1" # delay 0.8 # pan "1"
+
+d2 $ s "<piano*3 piano:4 piano:4>" # speed 3 # gain 0.8 # n (irand 15) # cutoff (range 200 300 $ slow 8 $ sine) # resonance "0.1" # delay 0.8 # pan "0.7"
+
+d3 $ s "<piano*5 piano:6>" # speed 2.5 # gain 0.6 # n (irand 15) # cutoff (range 300 400 $ slow 8 $ sine) # resonance "0" # delay 0.8 # pan "0.7"
+
+hush
+
+
+--feldman again
+
+-- these sync together despite different cps
+d1 $ sound "sn(3,8)" # cps (slow 20 $ range 1 2 sine)
+
+d3 $ sound "bd(3,8)" # cps (slow 10 $ range 1 2 sine)
+
+hush
+
+-- this does not alternate tempos.
+d1 $ s "bd"
+
+setcps "5 10"
+
+-- so, cannot get two patterns out of sync. that's ok
+
+
+-- all patterns will be mapped to d1 cps
+-- works!
+d1 $ sound "sn*8" # cps (range 0.9 1.5 (rand)) # pan rand
+
+d3 $ sound "bd*6" # pan rand
+
+hush
+
+-- slower
+
+
+-- all patterns will be mapped to d1 cps
+-- vn
+
+d1 $ n "<9 10 11> <19 20 21 22>" # sound "piano" # cps "<0.8 0.72 0.65 0.9 0.7> <0.5 0.35 0.4 0.45 0.55> " # pan "1 0 1" # gain 0.7
+
+d2 $ n "<9 10 11 9> <18 19 20>" # sound "piano" # speed "1.5 1.875" # pan "0 1 0" # gain 0.7
+
+d3 $ n "0/8" # s "piano" # speed "0.666666" # gain 1
+
+d4 $ n "<0 1 2 3 4 5 6>*10" # s "<bd sn sn hh>" # gain 0.7 # cutoff 100 # delay 1
+
+hush
+
+
+-- new attempt at droning
+-- vn
+
+setcps 0.25
+
+d1 $ sometimesBy 0.4 (|* speed "<0.75 1.5 0.5>") $ sometimesBy 0.5 rev $ sometimesBy 0.2 (|* speed "") $ speed "[1 1.5]*8" # n "<19 20 21 22>" # sound "piano" # pan rand # gain 1 # attack 1 # release 1 # delay 1 # orbit 1 # end 2
+
+d2 $ speed "[1.5, 1.75, 2, 2.25]*24" # n "27" # sound "piano" # pan sine # gain 1 # end 0.04 # delay 0 # silence
+
+
+hush
+
+
+setcps 1
+
+d1 $ speed (shuffle 4 "1 1.125 1.25 1.5") # s "piano:16" # attack 8 # release 10
+
+d2 $ s "bd:9*4" # cutoff 300 # n (shuffle 4 "0 1 2 3")
+
+hush
+--
+
+
+
+d2 $ s "bd*2" # cutoff 500 # silence
+
+d3 $ sometimes rev $ s "bd:7(5,8)" # cutoff 400 # gain 1.2
+
+d6 $ s "<_ cp?, _ sn*8?>" # cutoff 300 # gain 1.2
+
+-- this note combo has a nice tone
+
+d4 $ s "piano:20/4?" # cutoff 300 # speed "<1 1 1 1.125>" # pan rand # gain 2
+
+d5 $ s "piano:20/4?" # cutoff 300 # speed "<1.5 1.25 1.5 1.125>" # pan rand # gain 2
+
+hush
+
+--
+
+d1 $ every 2 rev $ every 2 (speed |+| "2") $ speed "[0.5? 1? 1.25? 1.5? 1.875?]*4" # s "piano:14" # delay 0.8 # orbit 1 # cps (range 1 2 $ slow 12 sine) # cutoff (range 500 2000 $ slow 8 sine) # end 0.3
+
+
+-- drum experiment
+
+d2 $ n "1 .. 24" # s "sn" # end (slow 4 sine) # pan rand # delay 0.9 # orbit 1
+
+hush
+
+-- chords - draft
+-- interesting
+
+setcps 0.4
+
+d1 $ (range 0.8 1.2 (slow 4 sine) <~) $ speed "<1 1 1 0.75 1 1 1 0.75 0.6666>" # s "piano:20" # gain 1 |* speed "[0.5, 0.75, 1.25, 1.875]"
+
+d2 $ s "bd" # cutoff 100
+
+d3 $ (rand <~) $ slow 2 $ speed "<1.25 _ 1.5 1.675 1.875 _ 1.125 1 _ _>*24" |* speed "1" # s "piano:20" # end 1 # delay 1 # orbit 1 # cutoff 1500 # gain (range 0.5 1 (rand))
+
+hush
+
+
+-- there is a track here. work with the melody pattern
+
+setcps 0.4
+
+d1 $ (range 0.8 1.2 (slow 4 sine) <~) $ speed "<1 1 1 0.75 1 1 1 0.75 0.6666>" # s "piano:20" # gain 1 |* speed "[0.5, 0.75, 1.25, 1.875]"
+
+d2 $ s "bd:1" # cutoff 100
+
+d3 $ (rand <~) $ slow 2 $ speed "<1.25 _ 1.5 1.675 1.875 _ 1.125 1 _ _>*24" |* speed "1" # s "piano:20" # end 1 # delay 1 # orbit 1 # cutoff 1500 # gain (range 0.5 1 (rand))
+
+hush

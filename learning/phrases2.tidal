@@ -1,0 +1,249 @@
+
+
+let ji = [ 16/16, 18/16, 20/16, 24/16, 27/16, 30/16 ]
+
+d1 $ slow 12 $ speed "[1, 0.8333333] [0.75, 1.25]" # s "piano:22" # cutoff 800 # delay 0.5 # pan rand
+
+d2 $ degrade $ slow "<16, 14, 18, 12>" $ speed "1 1.6666666 1.5 1.25" # s "piano:22" # cutoff 700 # pan rand
+
+d3 $ slow "<6, 4, 8, 12>" $ s "bd" # cutoff 100 # gain 0.8
+
+d4 $ fast 10 $ jux (rev) $ speed "0.5" # (zoom (0.1, 0.15) $ chop 32 $ sound "piano:12") # pan (slow 50 $ sine) # gain (slow 60 $ scale 0.5 1 sine)
+
+hush
+
+-- nice
+
+let ji = [ 16/16, 18/16, 20/16, 24/16, 27/16, 30/16 ]
+
+d1 $ spread ($) [rev, striate 3, slow 5] $ ("<0 0.5 0.125>" <~) $ s "bd hh sn piano:26" # cutoff 800 # speed (choose ji)
+
+hush
+
+-- ok
+
+d1 $ fast "<1.75 1.25 1>" $ trunc "<0.75 0.25 1>" $ speed "0.5 0.75 1 1.125 1.5" # sound "piano:26" # pan rand # gain (slow 10 $ scale 0.5 1 sine ) # cutoff 1000
+d1 $ silence
+d2 $ fast 10 $ jux (rev) $ speed "1.5" # (zoom (0.1, 0.15) $ chop 32 $ sound "piano:12") # pan (slow 50 $ sine) # gain (slow 50 $ scale 0.5 1 sine)
+
+d3 $ fast 10 $ jux (rev) $ speed "1" # (zoom (0.1, 0.15) $ chop 32 $ sound "piano:12") # pan (slow 50 $ sine) # gain (slow 40 $ scale 0.5 1 sine)
+
+d3 $ fast 10 $ jux (rev) $ speed "0.75" # (zoom (0.1, 0.15) $ chop 32 $ sound "piano:12") # pan (slow 50 $ sine) # gain (slow 60 $ scale 0.5 1 sine)
+
+d4 $ fast 10 $ jux (rev) $ speed "0.666666" # (zoom (0.1, 0.15) $ chop 32 $ sound "piano:12") # pan (slow 50 $ sine) # gain (slow 100 $ scale 0.5 1 sine)
+
+hush
+
+
+-- nice
+
+d1 $ spread ($) [fast 1.5, rev, slow 1.5 ] $ shuffle 16 (chop 16 $ sound "piano:26") # speed "0.5 0.75 1 1.125 1.5" # pan rand # cutoff 1100
+
+d2 $ shuffle 4 (chop 4 $ sound "piano:28") # speed "0.5 0.75 1 1.125 1.5" # cutoff 1100
+
+d3 $ slow 10 $ sound "piano:15" # speed "0.6666666" # cutoff 500
+
+d4 $ degrade $ slow 2 $ s "bd" # cutoff 200
+
+d5 $ degrade $ spread ($) [fast 1.5, rev, slow 1.5 ] $ shuffle 3 (chop 3 $ sound "cp") # cutoff 1500 # speed (slow 10 $ sine * 10)
+
+
+hush
+--
+
+d1 $ sound "bd(3,8)"
+
+t1 (clutchIn 8) $ sound "[hh*4, odx(3,8)]"
+
+
+-- nice
+
+d1 $ palindrome $ jux (rev) $ linger "0.05 0.1 0.2 0.3" $ loopAt 2 $ chop 20 $ sound "breaks125" # delay 0.5 # cutoff 1200 # gain 0.9
+
+hush
+
+
+-- nice
+
+d1 $ fast 1.1 $ iter 3 $ palindrome $ jux (rev) $ every 2 (linger 0.5) $ speed "0.5 0.75 1 1.125 1.25 1.5 1.875" # sound "piano:26" # legato "5" # cutoff (slow 40 $ scale 1200 2000 sine) # pan rand # delay 0.3
+d1 $ silence
+--
+
+d1 $ fit' 1 4 (run 4) "4 3 2 1 2 3 4 5 6 10 5 15" $ chop 20 $ (sound "piano:26")
+
+d1 $ fast 4 $ sound (fit 3 ["bd", "sn", "arpy", "arpy:1", "casio"] "0 [~ 1] 2 1")
+
+
+--
+
+d1 $ degradeBy 0.97 $ fast 3 $ palindrome $ speed "0.5 0.75 1 1.125 1.5 1.75" # sound "piano:26" # cutoff (slow 20 $ scale 400 1000 sine) # gain (slow 23 $ scale 0.7 1 sine)
+
+hush
+
+
+
+
+
+
+
+
+
+-- nice
+
+d1 $ sometimes (fast 4) $ speed "0.5 0.75 1 1.125 2" # s "piano:26" # cutoff 1000 # gain 1 # begin "0.1" # end "0.11" # loop 3 # crush "6" # shape 0.5 # delay "0.9" # delaytime "0.25" # pan rand
+
+hush
+
+--
+
+d1 $ slow 0.15 $ n "-12 -10" # s "superfork" # speed (slow 20 $ sine * 0.5) # pan rand
+
+hush
+
+--
+
+let ji = [ 16, 18, 20, 24, 27, 30 ]
+
+let oct = [ 0.5, 1 ]
+
+d1 $ n ( discretise 6 $ (irand 10) ) # s "bd [sn, hh, cp]" # delay 5
+
+d1 $ slow (discretise 1 $ irand 10 + 1) $ cat [
+  s "piano:26" # speed "1",
+  s "piano:26" # speed "0.5"
+]
+
+d2 $ (1 <~) $ slow (discretise 1 $ irand 10 + 1) $ cat [
+  s "piano:26" # speed "0.75",
+  s "piano:26" # speed "1.25"
+]
+
+hush
+
+
+
+
+
+d3 $ slow 4 $ s "piano:0" # cutoff 500 # gain 2
+
+
+hush
+
+
+
+
+---
+
+
+let ji = [ 16, 18, 20, 24, 27, 30 ]
+
+let oct = [ 0.5, 1 ]
+
+d1 $ every 4 (rev) $ every 2 (slow 2) $ every 5 (slow 4) $ speed (discretise 8 (scale 1 2 $ sine)) # s "piano:26" # pan (slow 10 $ sine) # cutoff (slow 20 $ sine*400 + 300)
+
+d2 $ every 5 (rev) $ every 3 (slow 2) $ every 4 (slow 4) $ speed (discretise 4 (scale 0.5 1 $ sine)) # s "piano:26" # pan (slow 10 $ sine) # cutoff (slow 20 $ sine*400 + 300)
+
+d3 $ slow 4 $ s "piano:0" # cutoff 500 # gain 2
+
+d2 $ silence
+
+hush
+
+
+
+-- nice
+
+d1 $ fast (discretise 1 $ irand 5 + 1) $ speed "<1.6666666? 1.5? 1.25? 1.125?>" # s "piano:26" # pan (slow 10 $ sine) # cutoff (slow 20 $ sine*300 + 200)
+
+d5 $ s "bd" # gain 0.7 # cutoff (slow 5 $ sine*300 + 100)
+
+d4 $ fast (discretise 1 $ irand 5 + 1) $ speed "<1? 0.6666666? 0.75? 0.5?>" # s "piano:26" # pan (slow 10 $ sine) # cutoff (slow 20 $ sine*300 + 200)
+
+hush
+
+
+--
+
+
+d1 $ fast 3 $ sometimes (rev) $ speed "1.6666666 1.5" # s "piano:26" # pan "0 1" # cutoff (slow 20 $ sine*300 + 200)
+
+d2 $ slow 10 $ s "piano:5" # gain 1 # speed 0.66666666 # cutoff 200
+
+d3 $ fast 3 $ (0.5 <~) $ sometimes (rev) $ speed "1.33333333 1" # s "piano:26" # pan "0 1" # cutoff (slow 20 $ sine*500 + 200)
+
+
+hush
+
+
+
+
+
+
+
+
+let ji = [ 16, 18, 20, 24, 27, 30 ]
+
+let oct = [ 0.5, 1 ]
+
+d1 $ fast (discretise 1 $ irand 10 + 1) $ s "hh" # cutoff 200 # gain (sine*1.5)
+
+d2 $ fast (discretise 1 $ irand 8 + 1) $ s "hh" # cutoff 200 # gain (sine*1.5)
+
+d3 $ slow 5 $ fast (discretise 1 $ (irand 4 + 1) ) $ s "bd" # cutoff 100 # gain (sine*1.5)
+
+d4 $ fast (discretise 1 $ irand 20 + 1) $ (1 <~) $ degradeBy 0.95 $ (1 <~) $ s "piano:18" # speed (((choose ji)/16)*(choose oct)) # pan (discretise 100 $ rand) # gain (sine*2) # crush 2
+
+d5 $ slow 10 $ s "piano:0" # gain (sine*2)
+
+hush
+
+
+-- d3 $ fast (discretise 1 $ irand 20 + 1) $ (1 <~) $ degradeBy 0.95 $ (1 <~) $ s "piano:18" # speed (((choose ji)/16)*(choose oct)) # pan (discretise 100 $ rand)
+
+
+
+
+
+
+
+let ji = [ 16, 18, 20, 24, 27, 30 ]
+
+let oct = [ 0.5, 1 ]
+
+hush
+
+d1 $ seqPLoop [
+  (0, 1, sound "piano:0"),
+  (4, 7, fast (discretise 1 $ irand 10 + 1) $ ( 0.1 <~ ) $ s "piano:27" # speed (((choose ji)/16)*(choose oct)) # cutoff 1100),
+  (7, 10, s "~" )
+]
+
+
+-- nice
+
+let ji = [ 16, 18, 20, 24, 27, 30 ]
+
+let oct = [ 0.5, 1 ]
+
+d1 $ seqPLoop [
+  (0, 1, s "piano:0" # gain 0.8),
+  (4, 6, s "piano:18*3" # pan (rand) # speed (((choose ji)/16)*(choose oct)) )
+] # silence
+
+--
+
+d1 $ seqPLoop [
+  (0, 1, sound "piano:0"),
+  (4, 6, s "piano:27*3" # pan (rand) # speed (scramble 6 "0.5 0.75 0.9 1") )
+]
+
+
+d1 $ spread ($) [fast 1] $ s "piano:33*6" # pan (rand) # speed (scramble 6 "0.25 0.3333 0.5 0.75 1 1.125 1.25 1.5") # cutoff (scale 600 1000 $ slow 20 $ sine)
+d1 $ silence
+d2 $ s "piano:27*6" # pan (rand) # speed (scramble 6 "0.5 0.75 1")
+
+d3 $ s "bd" # cutoff 100 # gain 0.6
+
+d3 $ silence
+
+hush

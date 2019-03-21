@@ -1,0 +1,10 @@
+
+
+
+
+
+d1 $ fast 2.5 $ superimpose (fast 1.005) $ up "<0 7 10> <2 9>" # sound "piano:26"
+
+
+
+hush

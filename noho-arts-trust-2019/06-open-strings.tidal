@@ -1,0 +1,37 @@
+-- ...
+
+d1 $ n "[7, 11, 14, 18, <[13, 18] [14, 19] [16, 21] [15, 20]>]/2" # s "p"
+
+setcps 1
+
+hush
+
+ -- whats a better way to do this
+
+ d1 $ n "[7 11 14 18]*<1 2 3>" # s "p-ji" # cps (range 0.8 1.2 $ sine) # gain 0.8
+
+ d2 $ n "<[13 18] [14 19] [16 21] [15 20]>/2" # s "p-ji"
+
+hush
+
+-- try again
+
+d1 $ n "[7 11 14 18 <15 16 20 19>]*<1.1 1.2 1.3>" # s "p-ji" # cps (range 0.8 1.2 $ sine) # gain 0.8 # cutoff (slow 50 $ range 1000 3000 $ sine)
+
+d2 $ n "<21 22 20>*8" # s "p-ji" # gain (slow 20 $ range 0.5 1 $ sine) # cutoff 1000 # sustain 2
+
+d3 $ n "5/<8 10>" # s "p-ji" # cutoff 700
+
+hush
+
+-- using arp
+
+d1 $ n (arpg "[10, 14, <15 16 17>, 18, <20 21 22>] ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~") # s "p-ji" # cps 0.1
+
+d2 $ n (arpg "[<15 16 17 18>, <20 21 22 23>] ~ ~ ~ ~") # s "p-ji" # cps 0.2 # silence
+
+setcps 1
+
+hush
+
+-- this idea did not work out ...
