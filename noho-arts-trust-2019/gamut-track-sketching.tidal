@@ -1,0 +1,23 @@
+d1 $ jux (rev)
+   $ randcat [
+        n "[12 14 15]*<3 4>" # s "p" # cps 1 # sustain 5,
+        n "[10 14 16]*<3 4>" # s "p" # cps 1 # sustain 5,
+        n "[11 14 18]*<3 4>" # s "p" # cps 1 # sustain 5,
+        n "[10 12 14]*<3 4>" # s "p" # cps 1 # sustain 5,
+        n "[7 10 12]*<3 4>" # s "p" # cps 1 # sustain 5,
+        --n "<5 4 5 7>" # s "p" # cps 5 # sustain 10
+        n "[15, 19, 21]" # s "p" # cps 0.2 # speed 0.5,
+        n "<28 27 26>/3" # s "p" # cps 0.3,
+        n "[<25 23 22>*<5 7 9>]/3" # s "p" # cps 0.3,
+        n "[7, 9, 11, 13]" # s "p" # cps "0.2" # speed "<0.5 0.75>"
+        --n "[14, 16, 18]" # s "p" # cps 0.2 # speed 0.5,
+        --n "[ [13 15 17]*4, [15 17 19]* ]" # s "p" # cps 0.2 # sustain 10  |* speed "1>"
+     ]
+   # cutoff 1000
+   # gain (slow 10 $ range 0.6 1 $ sine)
+
+d3 $ n "<1 5>/<6>"
+    # s "p"
+    # cutoff 500
+
+hush

@@ -1,0 +1,150 @@
+
+-- this version is better!!
+-- save, do not edit
+
+
+setcps 1
+
+d1 $ s "bd/3" # cutoff 30
+
+d2 $ n (scramble 2 "21/8 26/7 25/10 19/9 23/9 17/15 12/20 10/30")
+  # s "p"
+  # nudge rand
+  # cutoff 500
+  # gain (range 0.5 1 $ rand)
+  # pan rand
+  # room 0.8
+  |* speed "0.5 0.75 1 0.99 1.01"
+
+-- practicing
+-- notes used:
+-- 21 26 start
+-- 10 12 17 19 21 23 25 26 27
+-- scale degrees: 4 6 , 4 6 , 1 3 5 6 7
+
+
+
+
+
+
+
+
+
+
+
+setcps 0.3
+
+d1 $ s "bd" # cutoff 30
+
+d2 $ jux (rev) $ n (scramble 20 "21/2 26/3 19/4 25/4 23/5 17/3 10/5 12/5 ")
+# s "p"
+# nudge rand
+# pan rand
+# gain (range 0.7 1 $ rand)
+# cutoff 1000
+# speed (scramble 5 "1 0.99 0.66666 1.01 0.5")
+
+
+d2 $ n "[0 2 4 6 8 9 11]*5"
+|+ n "0 7 14 21 14"
+# s "p"
+# cutoff 1000
+|+ n "<0 5 3>"
+
+-- works but more lengthy
+d2 $ n (arp "up up up down down" "[0, 2, 4, 6, 8, 9, 11]*5")
+|+ n "0 7 14 21 14"
+# s "p"
+# cutoff 1000
+
+setcps 0.45
+
+-- good version of arpeggios
+
+d2 $ every 2 (rev)
+$ n "[0 2 4 6 8 9 11]*4"
+|+ n "0 7 14 21"
+# s "p"
+# cutoff 1000
+|+ n "<0 5 3 1 4>/4"
+# nudge (range 0 0.03 $ rand)
+
+hush
+
+--
+
+d3 $ jux (rev)
+$ n (scramble 4 "4 7 9 11 12 14 16")
+|+ n "7"
+# s "p-wash"
+# cutoff 5000
+# nudge (range 0 0.03 $ rand)
+|* speed "-1 -0.99 -0.5 -1.01 -0.499"
+# delay 0.7
+# gain 0.5
+
+hush
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- practicing...
+
+d1 $ s "bd/3" # cutoff 30 # silence
+
+d2 $ jux (rev) $ whenmod 6 3 (rev)
+  $ n "[0 2 4 6 8 9 11]*6"
+  |+ n "0 7 14 21 14 7"
+  # s "p"
+  # cutoff 1000
+  |+ n "<0 5 3>/4"
+
+  -- how to set rev for only the first 1/2 of the cycle?
+
+setcps 0.3
+
+-- sounds great but is so f'ing dramatic... could only do this towards the end of the set.
+--or, only dramatic b/c of chord progression
+--0 5 3  -- much better
+hush
+
+-- transitioning this to arpeggios through editing...
+
+-- transition to arpeggios
+
+d3 $ n "[0 2 4 6 8 9 11]*5"
+  # s "p"
+  # cutoff 1000
+  |+ n "0 7 14 21"
+  # cps 0.3
+  # silence
+
+
+d1 $ jux (rev)
+$ whenmod 7 4 (rev)
+$ n "[0 2 4 6 7 8 9 11]*6"
+# s "p"
+|+ n "0 7 14 21 14 7"
+|+ n "<0 5 3>/4"
+# gain 0.8
+# cps 0.3
+
+d3 $ n "<11 12>/2" # s "p"
+
+hush
+
+
+hush

@@ -9,6 +9,13 @@ sections:
 == 18'
 -}
 
+{- should this be..
+one word
+arpeggios
+wash
+track 1
+-}
+
 {-
 Items to work on / with:
 - re-bounce samples from nap. slowed down and complete (at least know highest index)
@@ -20,27 +27,18 @@ Items to work on / with:
 - rewrite "track1" section using "p" sample bank
 -}
 
+-- one word opening (updated)
 
+d2 $ s "bd/3" # cutoff 30
 
--- gamut / beginning
---------------------
-
-d1 $ jux (rev)
-   $ randcat [
-        n "[12 14 15]*<3 4>" # sound "p" # cps 1 # sustain 3,
-        n "[10 14 16]*<3 4>" # sound "p" # cps 1 # sustain 3
-        --n "<5 4 5 7>" # s "p" # cps 5 # sustain 10,
-        --n "[15, 19, 21]" # s "p" # cps 0.2 # sustain 10
-     ]
-   # cutoff 1000
-   # gain (slow 10 $ range 0.6 1 $ sine)
-
-d3 $ n "<1 5>/<6>"
-    # s "p"
-    # cutoff 500
-
-hush
-
+d1 $ n (scramble 2 "21/8 26/7 25/10 19/9 23/9 17/15 12/20 10/30")
+  # s "p"
+  # nudge rand
+  # cutoff 500
+  # gain (range 0.7 1.2 $ rand)
+  # pan rand
+  # room 0.8
+  -- |* speed "0.5 0.75 1 0.99 1.01"
 
 -- 2_ 5-6 arpeggios, rather than north adams
 
@@ -50,15 +48,10 @@ $ n "[0 2 4 6 7 8 9 11]*6"
 # s "p"
 |+ n "0 7 14 21 14 7"
 |+ n "<0 5 3>/4"
-# gain 0.6
+# gain 0.8
 # cps 0.3
-# silence
-
--- d2 $ n "11/4" # s "p" |* speed 0.5 # gain 1.2 # silence
 
 d3 $ n "<11 12>/2" # s "p"
-
-d2 $ silence
 
 hush
 
@@ -228,7 +221,7 @@ d1 $ n "<[21, 23, 25] [19, 21, 23] [17, 21, 23]>/2"
   # sustain (range 1 5 $ rand)
   # cps (range 0.7 1 (rand))
 
-d2 $ s "bd/1.5" # cutoff 100 # gain (slow 12 $ range 0.7 1 $ sine) # silence
+d2 $ s "bd/1.5" # cutoff 100 # gain (slow 12 $ range 0.7 1 $ sine)
 
 d3 $ s "p/6"
   # n "<3 4>/6"
