@@ -1,0 +1,61 @@
+setcps 0.5
+
+d1 $ "bd/4" # cutoff 30
+
+d2 $ n (scramble 20 "21/4 26/5 19/6 18/7 22/8 25/9 15/10 12/11 7/12 5/13")
+# s "p"
+# nudge rand
+# pan rand
+# cutoff 1000
+# gain (range 0.5 0.8 $ rand)
+|* speed (scramble 5 "1 1 1 1 1 1 1 1 1.01 0.99 0.75 0.5")
+
+--clutchIn 2 16 $ n "[0 2 4 6 8 9 11]*4"
+
+
+setcps 0.5
+
+d2 $ every' 2 1 (rev)
+$ n "[0 2 4 6 8 9 11 14]*4"
+# s "p"
+# gain (range 0.6 0.7 $ slow 16 (sine))
+# cutoff 1000
+|+ n "0 7 14 21"
+|+ n "<0 5 3 1 4>/4"
+
+
+d2 $ every' 2 1 (rev)
+$ n "[0 2 4 6 8 9 11 14]*4"
+# s "p"
+# gain (range 0.6 0.7 $ slow 16 (sine))
+# cutoff 1000
+|+ n "0 7 14 21"
+|+ n "<0 5 3 1 4>/4"
+
+clutchIn 2 32 $ n ""
+
+d3 $ n (scramble 5 "17 19 21 22 24 26 28 29")
+# s "p-wash"
+# gain 0.8
+# speed (scramble 5 "-0.5 -0.75 -1")
+# cutoff 5000
+|* speed (range 0.99 1.01 $ rand)
+# orbit 1
+# delay 0.8
+# delayfeedback 0.8
+
+d2 $ n "[0 2 4 6 8 9 11]*4"
+# s "p"
+# cutoff 1000
+# gain 0.7
+|+ n "14"
+|+ n "<4>/4"
+
+xfadeIn 2 32 $ n ""
+
+hush
+
+
+
+
+hush

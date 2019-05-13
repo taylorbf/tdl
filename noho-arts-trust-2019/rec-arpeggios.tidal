@@ -1,0 +1,11 @@
+setcps 0.5
+
+d2 $ every' 2 1 (rev)
+$ n "[0 2 4 6 8 9 11]*4"
+|+ n "0 7 14 21"
+# s "p"
+# cutoff 1000
+|+ n "<4>/4" --  5 3 1 4
+# nudge (range 0 0.03 $ rand)
+
+hush

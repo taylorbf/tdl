@@ -1,0 +1,66 @@
+
+-- so what is the order!
+
+-- transitions that work ..
+-- drone > outro
+-- kmh >
+-- one word > drone
+-- rain?
+
+
+-- one word is the nicest beginning
+   -- tons of tuning, space, etc
+
+
+-- this is the key!!
+-- at end of kmh, a short drone of the following:
+ --- d1 $ n "23 25 26"
+    -- # s "p-wash"
+   -- then bring in rain,
+   -- and then the outro -- starting with d2 and d3
+
+
+
+setcps 0.5
+
+d1 $ n "23 25 26"
+# s "p-wash"
+# speed (scramble 8 "-1 -0.5")
+# cutoff 3000
+# gain 0.7
+# delay 0.7
+# delayfeedback 0.8
+# orbit 1
+
+d3 $ s "bd/6" # cutoff 30
+
+d2 $ n (scramble 15 "21/4 26/5 25/6 19/5 22/6 17/7 12/8 10/9 24/10 3/15")
+# s "p"
+# cutoff 500
+# nudge rand
+# pan rand
+# delay 0
+# gain (range 0.7 1 $ rand)
+# begin 0.05
+|* speed (range 0.99 1.01 $ rand)
+# silence
+
+hush
+
+d4 $ every' 2 1 (rev)
+$ n "[0 2 4 6 8 9 11]*4"
+# s "p"
+# cutoff 1000
+|+ n "0 7 14 21"
+|+ n "<0 5 3 1 4>/4"
+
+xfadeIn 4 32 $ n ""
+
+
+setcps 0.5
+
+-- rain
+
+d6 $ s "rain" # sustain (range 4 10 $ rand) # gain 0.7
+
+xfadeIn 6 16 $ n ""

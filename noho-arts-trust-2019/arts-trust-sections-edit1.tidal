@@ -236,4 +236,6 @@ d5 $ shuffle 10 $ n "~ ~ ~ ~ ~ ~ ~ ~ ~ <14 21 25>"
   # s "p"
   # sustain 5
 
+xfadeIn 5 8 $ n ""
+
 hush

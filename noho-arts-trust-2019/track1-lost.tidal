@@ -1,0 +1,27 @@
+
+setcps 1
+
+d1 $ n "<[21, 23, 25] [19, 21, 23] [17, 21, 23]>/2"
+  |* speed "<0.5 0.75>/2"
+  # s "p"
+  # sustain (range 1 5 $ rand)
+  # cps (range 0.7 1 (rand))
+
+d2 $ s "bd/1.5" # cutoff 100 # gain (slow 12 $ range 0.7 1 $ sine)
+
+d3 $ s "p/6"
+  # n "<3 4>/6"
+  # cutoff 200 # gain 1
+
+d4 $ n "<[19, 21] [17, 23] [14, 22]>/3" -- "0.5 1 1.25 1.5 1.75 2 . 1 1.25 1.5 1.75 2"
+  # s "p"
+  # sustain 5
+
+d5 $ shuffle 10 $ n "~ ~ ~ ~ ~ ~ ~ ~ ~ <14 21 25>"
+  |* speed "<1 1.007 0.995 1.001 1.005 0.995 0.997>"
+  # s "p"
+  # sustain 5
+
+xfadeIn 5 8 $ n ""
+
+hush

@@ -1,0 +1,33 @@
+d1 $ slow "<4 2 3>" $ every 2 (rev) $ chop 24 $ n "[17, 19, 21, 23]" # s "p" # begin "0"
+
+d2 $ slow "<2 3 5>" $ every 2 (rev) $ chop 24 $ n "[15, 17]" # s "p" # begin "0"
+
+hush
+--
+
+-- these 3 chords work well in a loop
+
+d1 $ layer [fast 3, fast 2, slow 1.25, slow 1.5, slow 1]
+$ jux (rev) $ chop 16 $ n "<15 17 19 21 25>" # s "p" # begin "0.05"
+
+d1 $ layer [fast 3, fast 2, slow 1.25, slow 1.5, slow 1]
+$ jux (rev) $ chop 16 $ n "<14 16 18 19 21>" # s "p" # begin "0.05"
+
+"12 . 14 . 16 . 18 . 22"
+
+-
+
+d1 $ layer [shuffle 8, shuffle 12, shuffle 16]
+$ n "12 . 14 . 16 . 18 . 22" # s "p" # pan rand # begin "0.05"
+
+d1 $ layer [shuffle 8, shuffle 12, shuffle 16]
+$ n "14 . 17 . 19 . 21 . 25" # s "p" # pan rand # begin "0.05"
+
+d1 $ layer [shuffle 8, shuffle 12, shuffle 16]
+$ n "15 . 17 . 19 . 21 . 23" # s "p" # pan rand # begin "0.05"
+
+d1 $ layer [shuffle 8, shuffle 12, shuffle 16]
+$ n "10 . 14 . 16 . 18 . 21" # s "p" # pan rand # begin "0.05"
+
+
+hush
